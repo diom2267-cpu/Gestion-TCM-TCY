@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CTM-TCY International – Gestion</title><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#C98B2B"><link rel="icon" href="icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g:#C98B2B;--g2:#E9B961;--v:#2F9E57;--v2:#7CCB94;--cr:#FBF6EC;--ink:#3B2A14;--mu:#8a7758;--rd:#C8503C}
+*{box-sizing:border-box;margin:0}
+body{font:15px/1.4 Poppins,system-ui,sans-serif;background:var(--cr);color:var(--ink);min-height:100vh}
+#splash{position:fixed;inset:0;z-index:99;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;transition:opacity .8s}
+#splash.h{opacity:0;pointer-events:none}
+#splash:before{content:'';position:absolute;inset:0;background:url(bus.jpg) center/cover;animation:kb 6s ease-out forwards}
+#splash:after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(120,70,8,.5),rgba(20,90,50,.55))}
+#splash>div{position:relative;z-index:1;padding:20px}
+@keyframes kb{from{transform:scale(1.25) translateX(4%)}to{transform:scale(1)}}
+.sn{font:900 clamp(40px,11vw,96px) Cinzel,Georgia,serif;letter-spacing:.06em;text-shadow:0 4px 24px #0006}
+.sn span{display:inline-block;opacity:0;transform:translateY(30px) scale(.6);animation:in .6s forwards;animation-delay:calc(var(--i)*.09s + .3s)}
+@keyframes in{to{opacity:1;transform:none}}
+.si{font:700 clamp(16px,4.5vw,30px) Cinzel,Georgia,serif;margin-top:8px;animation:sl 1.2s 1.3s both}
+@keyframes sl{from{opacity:0;letter-spacing:1.2em}to{opacity:1;letter-spacing:.5em}}
+.ld{width:min(280px,70vw);height:6px;border-radius:9px;background:#fff4;margin:28px auto 0;overflow:hidden}.ld i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g2),var(--v2));animation:ld 2.8s .2s forwards}
+@keyframes ld{to{width:100%}}
+header{padding:18px 20px 22px;background:linear-gradient(90deg,#fff 35%,#fffc 60%,#fff2 100%),url(bus.jpg) right center/cover;border-bottom:6px solid;border-image:linear-gradient(90deg,var(--g),var(--g2) 40%,#fff 45%,var(--v) 50%,var(--v2)) 1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.br h1{font:900 clamp(28px,6vw,52px) Cinzel,Georgia,serif;line-height:1;background:linear-gradient(100deg,#9c6410,#d99a35 45%,#2F9E57);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.04em}
+.br p{font:700 clamp(11px,2.4vw,17px) Cinzel,Georgia,serif;letter-spacing:.42em;color:var(--v);margin-top:4px}
+#clk{text-align:right;font-weight:500;background:#fffd;padding:8px 14px;border-radius:14px}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:10px 14px;background:#fbf6ecee;backdrop-filter:blur(8px);box-shadow:0 4px 14px #0001}
+nav button{flex:none;border:0;padding:10px 18px;border-radius:30px;background:#fff;font:500 14px Poppins,sans-serif;color:var(--ink);cursor:pointer;box-shadow:0 2px 6px #0001;transition:.2s}
+nav button.on{background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;box-shadow:0 6px 16px #c98b2b66;transform:translateY(-2px)}
+main{max-width:1000px;margin:0 auto;padding:16px}
+section{display:none}section.on{display:block;animation:up .35s}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.cd{background:#fff;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 10px 30px #7a561b18,0 2px 6px #0000000d}
+h2{font:700 18px Cinzel,Georgia,serif;margin-bottom:12px;color:#8a5a10}
+.ch{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ch button{padding:12px 8px;border-radius:14px;border:2px solid #f0e2c4;background:linear-gradient(#fff,#fdf6e6);font:500 14px Poppins,sans-serif;cursor:pointer;transition:.15s;color:var(--ink)}
+.ch button:hover{transform:translateY(-3px);box-shadow:0 8px 16px #c98b2b33}
+.ch button.on{border-color:var(--v);background:linear-gradient(135deg,var(--v),var(--v2));color:#fff;box-shadow:0 8px 18px #2f9e5755}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+label{font-size:12px;color:var(--mu);display:block;margin-bottom:3px}
+input,select,textarea{width:100%;padding:11px 12px;border:2px solid #f0e2c4;border-radius:12px;font:15px Poppins,sans-serif;background:#fffdf8;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--g)}
+.btn{border:0;padding:12px 22px;border-radius:14px;font:600 15px Poppins,sans-serif;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--v),#249049);box-shadow:0 6px 16px #2f9e5755;transition:.15s;display:inline-block}
+.btn:active{transform:scale(.97)}.btn.g{background:linear-gradient(135deg,var(--g),var(--g2));box-shadow:0 6px 16px #c98b2b55}.btn.r{background:linear-gradient(135deg,#c8503c,#e0806b);box-shadow:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.kp div{padding:14px;border-radius:18px;color:#fff;background:linear-gradient(135deg,var(--g),var(--g2));box-shadow:0 8px 20px #c98b2b44}
+.kp div:nth-child(2n){background:linear-gradient(135deg,var(--v),var(--v2));box-shadow:0 8px 20px #2f9e5744}
+.kp small{display:block;opacity:.9;font-size:12px}.kp b{font-size:20px}
+.rw{display:flex;justify-content:space-between;gap:10px;padding:12px;border-radius:14px;background:#fffdf8;border-left:5px solid var(--v);margin-bottom:8px}
+.rw.x{border-color:var(--rd)}.rw.off{opacity:.55}.rw.off b{text-decoration:line-through}
+.rw small{display:block;color:var(--mu);font-size:12px}.rw .m{color:var(--g)}.rw .w{color:var(--rd)}
+.am{text-align:right;font-weight:600;white-space:nowrap}.am span{display:flex;gap:6px;margin-top:6px}
+.sm{border:0;padding:5px 10px;border-radius:9px;background:var(--g2);color:#fff;font:500 12px Poppins,sans-serif;cursor:pointer}.sm.r{background:var(--rd)}
+.tag{background:#e6f5ec;color:var(--v);padding:1px 8px;border-radius:9px;font-size:12px}
+.bar{height:10px;border-radius:9px;background:#f3e8d0;margin:4px 0 10px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--v),var(--v2))}.bar.e i{background:linear-gradient(90deg,var(--g),var(--g2))}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 6px;text-align:right;border-bottom:1px solid #f0e2c4}th:first-child,td:first-child{text-align:left}th{color:var(--mu);font-weight:500}
+.up{color:var(--v)}.dn{color:var(--rd)}.mu{color:var(--mu)}
+#dirty{display:none;background:#fff3d6;color:#9a6200;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:10px}
+#fs{position:fixed;right:18px;bottom:18px;z-index:9;display:none}
+#md{position:fixed;inset:0;background:#2a1c0a88;display:none;place-items:center;z-index:50;padding:16px}#md.on{display:grid}
+.box{background:#fff;border-radius:22px;padding:22px;width:min(420px,100%);box-shadow:0 20px 50px #0004;animation:up .25s}.box p{margin-bottom:16px;font-weight:500}.box .row{justify-content:flex-end;margin-top:14px}
+#ts{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 20px;border-radius:30px;opacity:0;transition:.3s;z-index:60;pointer-events:none}#ts.on{opacity:1}
+.po{display:none}
+@media print{#splash,header,nav,.np,#md,#ts,#fs,#dirty{display:none!important}section{display:none!important}#t-b{display:block!important}.cd,.kp div{box-shadow:none}.po{display:block;text-align:center;margin-bottom:14px}.po h1{font:900 26px Cinzel,Georgia,serif;color:#8a5a10}body{background:#fff}.kp div{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div id="splash"><div><div class="sn" id="sn"></div><div class="si">INTERNATIONAL</div><div class="ld"><i></i></div></div></div>
+<header><div class="br"><h1>CTM-TCY</h1><p>INTERNATIONAL</p></div><div id="clk"></div></header>
+<nav id="nv"><button data-t="v" class="on">🎫 Ventes</button><button data-t="d">⛽ Dépenses</button><button data-t="b">📊 Bilan</button><button data-t="h">🕘 Historique</button><button data-t="p">⚙️ Paramètres</button></nav>
+<main>
+<div id="dirty">● Modifications non enregistrées</div>
+<section id="t-v" class="on"><div id="kv"></div>
+<div class="cd"><h2>Vente de tickets</h2><div class="ch" id="ch"></div>
+<div class="fr"><div><label>Prix du ticket (F)</label><input id="pr" type="number" inputmode="numeric" min="0"></div><div><label>Nombre de tickets</label><input id="qt" type="number" value="1" min="1"></div><div><label>Départ</label><select id="dp"></select></div><div><label>Heure du départ</label><input id="dt" type="time"></div></div>
+<div class="row"><button class="btn g" onclick="addSale()">➕ Ajouter la vente</button><button class="btn" id="sv" onclick="sav()">💾 Enregistrer</button><b id="tot"></b></div></div>
+<div class="cd"><h2>Ventes du jour</h2><div id="lv"></div></div></section>
+<section id="t-d"><div class="cd"><h2>Sortie / Dépense</h2><div class="fr"><div><label>Nature (Gazoil, Lavage…)</label><input id="ec" list="cats"><datalist id="cats"><option>Gazoil<option>Lavage<option>Péage<option>Entretien<option>Salaire</datalist></div><div><label>Montant (F)</label><input id="ea" type="number" inputmode="numeric"></div><div style="grid-column:1/-1"><label>Justification / explication</label><input id="en"></div></div>
+<div class="row"><button class="btn g" onclick="addExp()">➕ Ajouter la dépense</button><button class="btn" onclick="sav()">💾 Enregistrer</button></div></div>
+<div class="cd"><h2>Dépenses du jour</h2><div id="le"></div></div></section>
+<section id="t-b"><div class="cd np"><div class="row"><div style="flex:1"><label>Période</label><select id="pe"><option value="1">Aujourd'hui<option value="7">Semaine (7 jours)<option value="30" selected>Mois (30 jours)<option value="90">3 mois<option value="180">6 mois<option value="365">1 an</select></div><button class="btn g" onclick="prt()">🖨️ Imprimer / PDF</button></div></div>
+<div class="po"><h1>CTM-TCY INTERNATIONAL</h1><div id="pd"></div></div><div id="bb"></div></section>
+<section id="t-h"><div class="cd"><h2>Historique complet</h2><input id="hq" placeholder="Rechercher (ville, nature…)"><div id="lh" style="margin-top:12px"></div></div></section>
+<section id="t-p"><div class="cd"><h2>Ajouter une ville (trajet)</h2><div class="fr"><div><label>De</label><input id="rf" value="Ouaninou"></div><div><label>À</label><input id="rt"></div></div><button class="btn g" onclick="addR()">➕ Ajouter</button></div>
+<div class="cd"><h2>Trajets enregistrés</h2><div id="lr"></div></div>
+<div class="cd"><h2>Sauvegarde des données</h2><div class="row"><button class="btn" onclick="expo()">⬇️ Exporter</button><label class="btn g" style="margin:0">⬆️ Importer<input type="file" id="im" accept=".json" hidden></label></div><p class="mu" style="font-size:13px;margin-top:10px">Les données sont stockées sur cet appareil. Exportez régulièrement un fichier de sauvegarde ; importez-le pour tout retrouver.</p></div></section>
+</main>
+<button class="btn" id="fs" onclick="sav()">💾 Enregistrer</button>
+<div id="md"></div><div id="ts"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],K='ctm_db';
+const e=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const DEF=()=>({routes:['Abidjan','Duekoué','Daloa','Bonon','Bouaflé','Yamoussoukro','Bôdô'].map((t,i)=>({id:'r'+i,from:'Ouaninou',to:t})),sales:[],exps:[],last:{}});
+let db;try{db=JSON.parse(localStorage.getItem(K))||DEF()}catch{db=DEF()}
+let dirty=false,sel=null;
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const F=n=>Math.round(n).toLocaleString('fr-FR')+' F';
+const D=t=>new Date(t).toLocaleString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+const rl=r=>r.from+'-'+r.to;
+const DL=['',...Array.from({length:20},(_,i)=>(i?i+1+'e':'1er')+' départ')];
+const depOpt=v=>DL.map(l=>`<option value="${l}" ${l==v?'selected':''}>${l||'Sans départ'}</option>`).join('');
+const find=(t,id)=>(t=='s'?db.sales:db.exps).find(x=>x.id==id);
+function toast(m){const t=$('#ts');t.textContent=m;t.classList.add('on');clearTimeout(toast.i);toast.i=setTimeout(()=>t.classList.remove('on'),2200)}
+function modal(h){$('#md').innerHTML='<div class="box">'+h+'</div>';$('#md').classList.add('on')}
+function close(){$('#md').classList.remove('on')}
+function ask(m,yes){modal(`<p>${m}</p><div class="row"><button class="btn g" id="n">Non</button><button class="btn" id="y">Oui</button></div>`);$('#n').onclick=close;$('#y').onclick=()=>{close();yes()}}
+function touch(){dirty=true;render()}
+function save(){localStorage.setItem(K,JSON.stringify(db));dirty=false;render();toast('Enregistré ✔')}
+function sav(){ask('Voulez-vous vraiment enregistrer ?',save)}
+function pick(l){sel=l;if(db.last[l])$('#pr').value=db.last[l];render()}
+function addSale(){
+ if(!sel)return toast('Choisissez une ville');
+ const p=+$('#pr').value,q=+$('#qt').value||1;
+ if(!(p>0))return toast('Entrez le prix');
+ db.last[sel]=p;db.sales.push({id:uid(),route:sel,price:p,qty:q,dep:$('#dp').value,dt:$('#dt').value,at:Date.now()});
+ $('#qt').value=1;toast('Vente ajoutée (à enregistrer)');touch()}
+function addExp(){
+ const c=$('#ec').value.trim(),a=+$('#ea').value;
+ if(!c||!(a>0))return toast('Nature et montant requis');
+ db.exps.push({id:uid(),cat:c,amt:a,note:$('#en').value.trim(),at:Date.now()});
+ ['#ec','#ea','#en'].forEach(s=>$(s).value='');toast('Dépense ajoutée (à enregistrer)');touch()}
+function addR(){
+ const f=$('#rf').value.trim(),t=$('#rt').value.trim();
+ if(!f||!t)return toast('Remplissez De et À');
+ db.routes.push({id:uid(),from:f,to:t});$('#rt').value='';toast('Trajet ajouté');touch()}
+function delR(id){ask('Supprimer ce trajet ?',()=>{db.routes=db.routes.filter(r=>r.id!=id);touch()})}
+function ed(t,id){const s=t=='s',x=find(t,id);
+ modal((s?`<h2>Modifier la vente</h2><label>Prix</label><input id="m1" type="number" value="${x.price}"><label>Nombre de tickets</label><input id="m2" type="number" value="${x.qty}"><label>Départ</label><select id="m3">${depOpt(x.dep)}</select><label>Heure du départ</label><input id="m4" type="time" value="${x.dt||''}">`:`<h2>Modifier la dépense</h2><label>Nature</label><input id="m1" value="${e(x.cat)}"><label>Montant</label><input id="m2" type="number" value="${x.amt}"><label>Justification</label><input id="m3" value="${e(x.note)}">`)+`<div class="row"><button class="btn g" id="n">Fermer</button><button class="btn" id="y">Valider</button></div>`);
+ $('#n').onclick=close;
+ $('#y').onclick=()=>{if(s){x.price=+$('#m1').value;x.qty=+$('#m2').value||1;x.dep=$('#m3').value;x.dt=$('#m4').value}else{x.cat=$('#m1').value.trim();x.amt=+$('#m2').value;x.note=$('#m3').value.trim()}x.mod=Date.now();close();touch()}}
+function cn(t,id){
+ modal(`<h2>Annuler</h2><label>Justification (obligatoire)</label><textarea id="m1" rows="3"></textarea><div class="row"><button class="btn g" id="n">Retour</button><button class="btn r" id="y">Confirmer l'annulation</button></div>`);
+ $('#n').onclick=close;
+ $('#y').onclick=()=>{const w=$('#m1').value.trim();if(!w)return toast('Justification obligatoire');find(t,id).cancel={why:w,at:Date.now()};close();touch()}}
+function row(t,x){const s=t=='s',c=x.cancel;
+ return `<div class="rw ${t} ${c?'off':''}"><div><b>${s?e(x.route)+' · '+x.qty+' × '+F(x.price):e(x.cat)}</b>${s&&x.dep?` <span class="tag">${x.dep}${x.dt?' · '+x.dt:''}</span>`:''}<small>${D(x.at)}</small>${x.mod?`<small class="m">✎ Modifié le ${D(x.mod)}</small>`:''}${!s&&x.note?`<small>${e(x.note)}</small>`:''}${c?`<small class="w">Annulé le ${D(c.at)} : ${e(c.why)}</small>`:''}</div><div class="am">${s?'+':'−'}${F(s?x.price*x.qty:x.amt)}${c?'':`<span><button class="sm" onclick="ed('${t}','${x.id}')">Modifier</button><button class="sm r" onclick="cn('${t}','${x.id}')">Annuler</button></span>`}</div></div>`}
+function stat(n,o){const m=new Date();m.setHours(24,0,0,0);const en=+m-o*n*864e5,st=en-n*864e5,
+ S=db.sales.filter(x=>!x.cancel&&x.at>=st&&x.at<en),X=db.exps.filter(x=>!x.cancel&&x.at>=st&&x.at<en),
+ rev=S.reduce((a,x)=>a+x.price*x.qty,0),pax=S.reduce((a,x)=>a+x.qty,0),ex=X.reduce((a,x)=>a+x.amt,0);
+ return{S,X,rev,pax,ex,net:rev-ex}}
+const grp=(a,k,v)=>Object.entries(a.reduce((o,x)=>(o[k(x)]=(o[k(x)]||0)+v(x),o),{})).sort((a,b)=>b[1]-a[1]);
+const ev=(a,b,inv)=>{if(!a&&!b)return'—';const p=b?Math.round((a-b)/b*100):100,g=inv?p<=0:p>=0;return `<span class="${g?'up':'dn'}">${p>=0?'▲':'▼'} ${Math.abs(p)}%</span>`};
+const kpi=k=>`<div class="kp"><div><small>Recettes</small><b>${F(k.rev)}</b></div><div><small>Dépenses</small><b>${F(k.ex)}</b></div><div><small>Solde net</small><b>${F(k.net)}</b></div><div><small>Passagers</small><b>${k.pax}</b></div></div>`;
+const bars=(l,cls)=>{const mx=l.length?l[0][1]:0;return l.map(([k,v])=>`<div style="display:flex;justify-content:space-between;gap:8px"><span>${e(k)}</span><b>${F(v)}</b></div><div class="bar ${cls}"><i style="width:${mx?v/mx*100:0}%"></i></div>`).join('')||'<p class="mu">—</p>'};
+function render(){
+ const dp=$('#dp').value;
+ $('#dirty').style.display=dirty?'inline-block':'none';$('#fs').style.display=dirty?'block':'none';
+ $('#sv').textContent='💾 Enregistrer'+(dp?' '+dp:'');
+ $('#ch').innerHTML=db.routes.map(r=>{const l=rl(r);return `<button class="${sel==l?'on':''}" data-l="${e(l)}" onclick="pick(this.dataset.l)">${e(l)}</button>`}).join('');
+ const q=(+$('#qt').value||1)*(+$('#pr').value||0);$('#tot').textContent=sel?sel+' → '+F(q):'';
+ const t0=new Date().setHours(0,0,0,0),td=x=>x.at>=t0;
+ $('#kv').innerHTML=kpi(stat(1,0));
+ $('#lv').innerHTML=db.sales.filter(td).sort((a,b)=>b.at-a.at).map(x=>row('s',x)).join('')||'<p class="mu">Aucune vente aujourd\'hui.</p>';
+ $('#le').innerHTML=db.exps.filter(td).sort((a,b)=>b.at-a.at).map(x=>row('x',x)).join('')||'<p class="mu">Aucune dépense aujourd\'hui.</p>';
+ const n=+$('#pe').value,a=stat(n,0),b=stat(n,1),px=Object.fromEntries(grp(a.S,x=>x.route,x=>x.qty));
+ $('#pd').textContent='Bilan – '+$('#pe').selectedOptions[0].text+' · édité le '+D(Date.now());
+ const P=[[1,'Jour'],[7,'Semaine'],[30,'Mois'],[90,'3 mois'],[180,'6 mois'],[365,'1 an']];
+ $('#bb').innerHTML=kpi(a)+`<div class="cd"><h2>Comparatif avec la période précédente</h2><table><tr><th></th><th>Actuelle</th><th>Précédente</th><th>Évolution</th></tr><tr><td>Recettes</td><td>${F(a.rev)}</td><td>${F(b.rev)}</td><td>${ev(a.rev,b.rev)}</td></tr><tr><td>Dépenses</td><td>${F(a.ex)}</td><td>${F(b.ex)}</td><td>${ev(a.ex,b.ex,1)}</td></tr><tr><td>Solde net</td><td>${F(a.net)}</td><td>${F(b.net)}</td><td>${ev(a.net,b.net)}</td></tr><tr><td>Passagers</td><td>${a.pax}</td><td>${b.pax}</td><td>${ev(a.pax,b.pax)}</td></tr></table></div>
+ <div class="cd"><h2>Toutes les périodes</h2><table><tr><th></th><th>Recettes</th><th>Évol.</th><th>Dépenses</th><th>Évol.</th><th>Solde</th></tr>${P.map(([d,l])=>{const c=stat(d,0),p=stat(d,1);return `<tr><td>${l}</td><td>${F(c.rev)}</td><td>${ev(c.rev,p.rev)}</td><td>${F(c.ex)}</td><td>${ev(c.ex,p.ex,1)}</td><td><b>${F(c.net)}</b></td></tr>`}).join('')}</table></div>
+ <div class="cd"><h2>Recettes par trajet</h2>${bars(grp(a.S,x=>x.route,x=>x.price*x.qty).map(([k,v])=>[k+' · '+px[k]+' pers.',v]),'')}</div>
+ <div class="cd"><h2>Dépenses par nature</h2>${bars(grp(a.X,x=>x.cat,x=>x.amt),'e')}</div>`;
+ const h=$('#hq').value.toLowerCase();
+ $('#lh').innerHTML=[...db.sales.map(x=>['s',x]),...db.exps.map(x=>['x',x])].filter(([t,x])=>((x.route||x.cat)+' '+(x.note||'')).toLowerCase().includes(h)).sort((a,b)=>b[1].at-a[1].at).map(([t,x])=>row(t,x)).join('')||'<p class="mu">Aucun enregistrement.</p>';
+ $('#lr').innerHTML=db.routes.map(r=>`<div class="rw"><b>${e(rl(r))}</b><button class="sm r" onclick="delR('${r.id}')">Supprimer</button></div>`).join('')||'<p class="mu">Aucun trajet.</p>'}
+function prt(){$('[data-t=b]').click();setTimeout(print,300)}
+function expo(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db)],{type:'application/json'}));a.download='CTM-TCY-sauvegarde-'+new Date().toISOString().slice(0,10)+'.json';a.click()}
+$('#im').onchange=ev=>{const f=ev.target.files[0];if(!f)return;f.text().then(t=>{try{const j=JSON.parse(t);if(!j.routes||!j.sales||!j.exps)throw 0;ask('Importer cette sauvegarde ? Elle remplacera les données actuelles.',()=>{db=j;db.last=db.last||{};save()})}catch{toast('Fichier invalide')}});ev.target.value=''};
+$$('#nv button').forEach(b=>b.onclick=()=>{$$('#nv button,section').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#t-'+b.dataset.t).classList.add('on');scrollTo(0,0)});
+$('#dp').innerHTML=depOpt('');
+$('#dp').onchange=()=>{if($('#dp').value&&!$('#dt').value)$('#dt').value=new Date().toTimeString().slice(0,5);render()};
+['#pr','#qt','#pe','#hq'].forEach(s=>$(s).oninput=render);
+addEventListener('beforeunload',ev=>{if(dirty){ev.preventDefault();ev.returnValue=''}});
+const tick=()=>$('#clk').innerHTML=`<b>${new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b><br>${new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
+tick();setInterval(tick,20000);
+$('#sn').innerHTML=[...'CTM-TCY'].map((c,i)=>`<span style="--i:${i}">${c}</span>`).join('');
+setTimeout(()=>{$('#splash').classList.add('h');setTimeout(()=>$('#splash').remove(),900)},3300);
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+render();
+</script></body></html>
