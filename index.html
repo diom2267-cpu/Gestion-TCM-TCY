@@ -16,6 +16,13 @@ body{font:15px/1.4 Poppins,system-ui,sans-serif;background:var(--cr);color:var(-
 @keyframes sl{from{opacity:0;letter-spacing:1.2em}to{opacity:1;letter-spacing:.5em}}
 .ld{width:min(280px,70vw);height:6px;border-radius:9px;background:#fff4;margin:28px auto 0;overflow:hidden}.ld i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g2),var(--v2));animation:ld 2.8s .2s forwards}
 @keyframes ld{to{width:100%}}
+#gate{position:fixed;inset:0;z-index:98;display:none;place-items:center;background:linear-gradient(160deg,#2a1c08,#0e3a22)}
+#gate.on{display:grid}
+.gbox{background:#fff;border-radius:22px;padding:30px 26px;width:min(360px,90%);text-align:center;box-shadow:0 20px 60px #0006;animation:up .3s}
+.gbox h2{font:700 22px Cinzel,Georgia,serif;color:#8a5a10;margin-bottom:6px}
+.gbox p{color:var(--mu);font-size:13px}
+.gbox input{margin:16px 0 6px;text-align:center;letter-spacing:.08em}
+.gbox .w{color:var(--rd);font-size:13px;min-height:18px}
 header{padding:18px 20px 22px;background:linear-gradient(90deg,#fff 35%,#fffc 60%,#fff2 100%),url(bus.jpg) right center/cover;border-bottom:6px solid;border-image:linear-gradient(90deg,var(--g),var(--g2) 40%,#fff 45%,var(--v) 50%,var(--v2)) 1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .br h1{font:900 clamp(28px,6vw,52px) Cinzel,Georgia,serif;line-height:1;background:linear-gradient(100deg,#9c6410,#d99a35 45%,#2F9E57);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.04em}
 .br p{font:700 clamp(11px,2.4vw,17px) Cinzel,Georgia,serif;letter-spacing:.42em;color:var(--v);margin-top:4px}
@@ -28,6 +35,7 @@ section{display:none}section.on{display:block;animation:up .35s}
 @keyframes up{from{opacity:0;transform:translateY(10px)}}
 .cd{background:#fff;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 10px 30px #7a561b18,0 2px 6px #0000000d}
 h2{font:700 18px Cinzel,Georgia,serif;margin-bottom:12px;color:#8a5a10}
+h3{font:700 15px Poppins,sans-serif;margin:14px 0 6px;color:#8a5a10}
 .ch{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .ch button{padding:12px 8px;border-radius:14px;border:2px solid #f0e2c4;background:linear-gradient(#fff,#fdf6e6);font:500 14px Poppins,sans-serif;cursor:pointer;transition:.15s;color:var(--ink)}
 .ch button:hover{transform:translateY(-3px);box-shadow:0 8px 16px #c98b2b33}
@@ -44,10 +52,10 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--g)}
 .kp div:nth-child(2n){background:linear-gradient(135deg,var(--v),var(--v2));box-shadow:0 8px 20px #2f9e5744}
 .kp small{display:block;opacity:.9;font-size:12px}.kp b{font-size:20px}
 .rw{display:flex;justify-content:space-between;gap:10px;padding:12px;border-radius:14px;background:#fffdf8;border-left:5px solid var(--v);margin-bottom:8px}
-.rw.x{border-color:var(--rd)}.rw.off{opacity:.55}.rw.off b{text-decoration:line-through}
+.rw.x{border-color:var(--rd)}
 .rw small{display:block;color:var(--mu);font-size:12px}.rw .m{color:var(--g)}.rw .w{color:var(--rd)}
 .am{text-align:right;font-weight:600;white-space:nowrap}.am span{display:flex;gap:6px;margin-top:6px}
-.sm{border:0;padding:5px 10px;border-radius:9px;background:var(--g2);color:#fff;font:500 12px Poppins,sans-serif;cursor:pointer}.sm.r{background:var(--rd)}
+.sm{border:0;padding:5px 10px;border-radius:9px;background:var(--g2);color:#fff;font:500 12px Poppins,sans-serif;cursor:pointer}.sm.r{background:var(--rd)}.sm.v{background:var(--v)}
 .tag{background:#e6f5ec;color:var(--v);padding:1px 8px;border-radius:9px;font-size:12px}
 .bar{height:10px;border-radius:9px;background:#f3e8d0;margin:4px 0 10px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--v),var(--v2))}.bar.e i{background:linear-gradient(90deg,var(--g),var(--g2))}
 table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 6px;text-align:right;border-bottom:1px solid #f0e2c4}th:first-child,td:first-child{text-align:left}th{color:var(--mu);font-weight:500}
@@ -55,14 +63,29 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 6px;t
 #dirty{display:none;background:#fff3d6;color:#9a6200;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:10px}
 #fs{position:fixed;right:18px;bottom:18px;z-index:9;display:none}
 #md{position:fixed;inset:0;background:#2a1c0a88;display:none;place-items:center;z-index:50;padding:16px}#md.on{display:grid}
-.box{background:#fff;border-radius:22px;padding:22px;width:min(420px,100%);box-shadow:0 20px 50px #0004;animation:up .25s}.box p{margin-bottom:16px;font-weight:500}.box .row{justify-content:flex-end;margin-top:14px}
+.box{background:#fff;border-radius:22px;padding:22px;width:min(420px,100%);box-shadow:0 20px 50px #0004;animation:up .25s;max-height:90vh;overflow:auto}.box p{margin-bottom:16px;font-weight:500}.box .row{justify-content:flex-end;margin-top:14px}
 #ts{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 20px;border-radius:30px;opacity:0;transition:.3s;z-index:60;pointer-events:none}#ts.on{opacity:1}
 .po{display:none}
-@media print{#splash,header,nav,.np,#md,#ts,#fs,#dirty{display:none!important}section{display:none!important}#t-b{display:block!important}.cd,.kp div{box-shadow:none}.po{display:block;text-align:center;margin-bottom:14px}.po h1{font:900 26px Cinzel,Georgia,serif;color:#8a5a10}body{background:#fff}.kp div{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:4px 10px;border-radius:20px;background:#faf3e2;font-size:12px;margin:3px 6px 3px 0}
+.dot{width:14px;height:14px;border-radius:4px;display:inline-block}
+.gd{display:flex;gap:14px;overflow-x:auto;padding:10px 2px 16px;scroll-snap-type:x mandatory}
+.gd figure{flex:none;width:min(280px,80vw);scroll-snap-align:center;background:#fffdf8;border:2px solid #f0e2c4;border-radius:16px;overflow:hidden}
+.gd .fk{aspect-ratio:9/16;background:linear-gradient(160deg,var(--g),var(--v));display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:14px;text-align:center;font-weight:600}
+.gd figcaption{padding:10px 12px;font-size:13px;color:var(--ink)}
+.gnav{text-align:center;color:var(--mu);font-size:12px;margin-top:-8px}
+.acc{border:2px solid #f0e2c4;border-radius:14px;margin-bottom:10px;overflow:hidden}
+.acc summary{padding:12px 14px;cursor:pointer;font-weight:600;background:#fdf6e6;list-style:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc div{padding:4px 14px 14px}
+.tabs2{display:flex;gap:8px;margin-bottom:14px}
+.tabs2 button{flex:1;border:2px solid #f0e2c4;background:#fff;padding:10px;border-radius:12px;font:600 13px Poppins;cursor:pointer;color:var(--ink)}
+.tabs2 button.on{background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;border-color:transparent}
+@media print{#splash,#gate,header,nav,.np,#md,#ts,#fs,#dirty{display:none!important}section{display:none!important}#t-b{display:block!important}.cd,.kp div{box-shadow:none}.po{display:block;text-align:center;margin-bottom:14px}.po h1{font:900 26px Cinzel,Georgia,serif;color:#8a5a10}body{background:#fff}.kp div{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body>
 <div id="splash"><div><div class="sn" id="sn"></div><div class="si">INTERNATIONAL</div><div class="ld"><i></i></div></div></div>
+<div id="gate"><div class="gbox"><h2>CTM-TCY</h2><p>Entrez le code d'accès pour ouvrir le logiciel</p><input id="gc" type="password" placeholder="Code d'accès" autocomplete="off"><button class="btn g" onclick="tryGate()" style="width:100%">Entrer</button><div class="w" id="ge"></div></div></div>
 <header><div class="br"><h1>CTM-TCY</h1><p>INTERNATIONAL</p></div><div id="clk"></div></header>
-<nav id="nv"><button data-t="v" class="on">🎫 Ventes</button><button data-t="d">⛽ Dépenses</button><button data-t="b">📊 Bilan</button><button data-t="h">🕘 Historique</button><button data-t="p">⚙️ Paramètres</button></nav>
+<nav id="nv"><button data-t="v" class="on">🎫 Ventes</button><button data-t="d">⛽ Dépenses</button><button data-t="b">📊 Bilan</button><button data-t="h">🕘 Historique</button><button data-t="c">🗑️ Corbeille</button><button data-t="p">⚙️ Paramètres</button><button data-t="g">📖 Lire le guide</button></nav>
 <main>
 <div id="dirty">● Modifications non enregistrées</div>
 <section id="t-v" class="on"><div id="kv"></div>
@@ -76,19 +99,51 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 6px;t
 <section id="t-b"><div class="cd np"><div class="row"><div style="flex:1"><label>Période</label><select id="pe"><option value="1">Aujourd'hui<option value="7">Semaine (7 jours)<option value="30" selected>Mois (30 jours)<option value="90">3 mois<option value="180">6 mois<option value="365">1 an</select></div><button class="btn g" onclick="prt()">🖨️ Imprimer / PDF</button></div></div>
 <div class="po"><h1>CTM-TCY INTERNATIONAL</h1><div id="pd"></div></div><div id="bb"></div></section>
 <section id="t-h"><div class="cd"><h2>Historique complet</h2><input id="hq" placeholder="Rechercher (ville, nature…)"><div id="lh" style="margin-top:12px"></div></div></section>
-<section id="t-p"><div class="cd"><h2>Ajouter une ville (trajet)</h2><div class="fr"><div><label>De</label><input id="rf" value="Ouaninou"></div><div><label>À</label><input id="rt"></div></div><button class="btn g" onclick="addR()">➕ Ajouter</button></div>
+<section id="t-c"><div class="cd"><h2>Corbeille</h2><p class="mu" style="margin-bottom:10px">Éléments retirés des ventes/dépenses. Vous pouvez les restaurer ou les supprimer définitivement.</p><div id="lc"></div></div></section>
+<section id="t-p">
+<div class="cd"><h2>Ajouter une ville (trajet)</h2><div class="fr"><div><label>De</label><input id="rf" value="Ouaninou"></div><div><label>À</label><input id="rt"></div></div><button class="btn g" onclick="addR()">➕ Ajouter</button></div>
 <div class="cd"><h2>Trajets enregistrés</h2><div id="lr"></div></div>
-<div class="cd"><h2>Sauvegarde des données</h2><div class="row"><button class="btn" onclick="expo()">⬇️ Exporter</button><label class="btn g" style="margin:0">⬆️ Importer<input type="file" id="im" accept=".json" hidden></label></div><p class="mu" style="font-size:13px;margin-top:10px">Les données sont stockées sur cet appareil. Exportez régulièrement un fichier de sauvegarde ; importez-le pour tout retrouver.</p></div></section>
+<div class="cd"><h2>Sauvegarde des données</h2><div class="row"><button class="btn" onclick="expo()">⬇️ Exporter</button><label class="btn g" style="margin:0">⬆️ Importer<input type="file" id="im" accept=".json" hidden></label></div><p class="mu" style="font-size:13px;margin-top:10px">Exportez régulièrement un fichier de sauvegarde ; importez-le pour tout retrouver (routes, ventes, dépenses).</p></div>
+<div class="cd"><h2>Zone sensible</h2><button class="btn r" onclick="doReset()">♻️ Réinitialiser l'application</button><p class="mu" style="font-size:13px;margin-top:10px">Efface toutes les données (ventes, dépenses, villes) et remet le logiciel à zéro, comme neuf. Récupérable uniquement via une sauvegarde importée.</p></div>
+</section>
+<section id="t-g"><div class="cd">
+<div class="tabs2"><button class="on" data-g="e">📄 Guide écrit</button><button data-g="i">🖼️ Démo en images</button></div>
+<div id="g-e">
+<h2>Guide d'utilisation — CTM-TCY Gestion</h2>
+<h3>🎨 Signification des couleurs</h3>
+<span class="chip"><span class="dot" style="background:linear-gradient(135deg,#C98B2B,#E9B961)"></span>Doré/Or — marque CTM-TCY, ventes, recettes</span>
+<span class="chip"><span class="dot" style="background:linear-gradient(135deg,#2F9E57,#7CCB94)"></span>Vert — dépenses, validations, enregistrement, hausse</span>
+<span class="chip"><span class="dot" style="background:#C8503C"></span>Rouge — suppression, annulation, corbeille, baisse</span>
+<span class="chip"><span class="dot" style="background:#fff3d6"></span>Jaune pâle — alerte « non enregistré »</span>
+<h3>🔑 Les deux codes</h3>
+<div class="acc"><summary>Code d'accès à l'application : <b>CTM2026</b></summary><div><p>Demandé une seule fois à l'ouverture de l'appli (majuscules ou minuscules acceptées). Sans lui, impossible d'entrer dans le logiciel.</p></div></div>
+<div class="acc"><summary>Code de modification : <b>International2026</b></summary><div><p>Demandé à chaque action sensible : ajouter/supprimer une ville, modifier ou retirer une vente/dépense, importer une sauvegarde, réinitialiser, ouvrir la Corbeille. Pas demandé pour vendre un ticket, ajouter une dépense, consulter le Bilan ou imprimer.</p></div></div>
+<h3>🎫 Onglet Ventes</h3>
+<div class="acc"><summary>Comment enregistrer une vente</summary><div><p>1. Cliquez sur la ville (ex. Ouaninou-Abidjan).<br>2. Entrez le prix du ticket et le nombre de tickets vendus.<br>3. Choisissez un départ (1er, 2e départ…) si besoin, et l'heure.<br>4. Cliquez « ➕ Ajouter la vente » : elle apparaît dans la liste du jour.<br>5. Cliquez « 💾 Enregistrer » puis confirmez « Oui » pour sauvegarder définitivement.</p></div></div>
+<div class="acc"><summary>Modifier une vente</summary><div><p>Bouton « Modifier » (vert) sur la ligne concernée → code International2026 → changez les valeurs → Valider. La ligne affiche ensuite « ✎ Modifié le… ».</p></div></div>
+<div class="acc"><summary>Retirer une vente</summary><div><p>Bouton « Annuler » (rouge) → code → justification obligatoire → l'élément part dans la Corbeille (il ne reste plus visible dans les ventes).</p></div></div>
+<h3>⛽ Onglet Dépenses</h3><p>Même principe : nature de la dépense (Gazoil, Lavage…), montant, justification, puis Ajouter et Enregistrer.</p>
+<h3>📊 Onglet Bilan</h3><p>Chiffres du jour, de la semaine, du mois, de 3 mois, 6 mois ou d'un an, avec comparaison à la période précédente (flèche verte ▲ = hausse, rouge ▼ = baisse). Le bouton « Imprimer / PDF » ouvre l'impression : choisissez « Enregistrer au format PDF » pour le télécharger.</p>
+<h3>🕘 Onglet Historique</h3><p>Toutes les ventes et dépenses, avec recherche par ville ou nature.</p>
+<h3>🗑️ Onglet Corbeille</h3><p>Protégé par le code de modification. Chaque élément retiré peut être « Restauré » (revient dans Ventes/Dépenses, gratuit, sans code) ou « Supprimé définitivement » (irréversible).</p>
+<h3>⚙️ Onglet Paramètres</h3><p>Ajouter/supprimer une ville (code requis), exporter une sauvegarde (fichier .json à garder précieusement), importer une sauvegarde, et « Réinitialiser » pour repartir de zéro (code + confirmation requis).</p>
+<h3>💾 Enregistrement et sécurité des données</h3><p>Si vous fermez l'appli avec des changements non enregistrés (bandeau jaune « Modifications non enregistrées »), le navigateur vous avertira avant de fermer. Toutes les données restent sur cet appareil : exportez régulièrement une sauvegarde.</p>
+</div>
+<div id="g-i" style="display:none"><h2>Démo en images — de l'ouverture à l'enregistrement</h2><div class="gd" id="gdw"></div><p class="gnav">👉 Faites glisser pour voir toutes les étapes</p></div>
+</div></section>
 </main>
 <button class="btn" id="fs" onclick="sav()">💾 Enregistrer</button>
 <div id="md"></div><div id="ts"></div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],K='ctm_db';
 const e=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const DEF=()=>({routes:['Abidjan','Duekoué','Daloa','Bonon','Bouaflé','Yamoussoukro','Bôdô'].map((t,i)=>({id:'r'+i,from:'Ouaninou',to:t})),sales:[],exps:[],last:{}});
+const DEF=()=>({routes:['Abidjan','Duekoué','Daloa','Bonon','Bouaflé','Yamoussoukro','Bôdô'].map((t,i)=>({id:'r'+i,from:'Ouaninou',to:t})),sales:[],exps:[],trash:[],last:{}});
+const EMPTY=()=>({routes:[],sales:[],exps:[],trash:[],last:{}});
 let db;try{db=JSON.parse(localStorage.getItem(K))||DEF()}catch{db=DEF()}
+if(!db.trash)db.trash=[];
+['sales','exps'].forEach(k=>{db[k]=(db[k]||[]).filter(x=>{if(x.cancel){db.trash.push({id:uid(),type:k=='sales'?'s':'x',data:{...x,cancel:undefined},why:x.cancel.why,at:x.cancel.at});return false}return true})});
 let dirty=false,sel=null;
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
 const F=n=>Math.round(n).toLocaleString('fr-FR')+' F';
 const D=t=>new Date(t).toLocaleString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
 const rl=r=>r.from+'-'+r.to;
@@ -99,6 +154,7 @@ function toast(m){const t=$('#ts');t.textContent=m;t.classList.add('on');clearTi
 function modal(h){$('#md').innerHTML='<div class="box">'+h+'</div>';$('#md').classList.add('on')}
 function close(){$('#md').classList.remove('on')}
 function ask(m,yes){modal(`<p>${m}</p><div class="row"><button class="btn g" id="n">Non</button><button class="btn" id="y">Oui</button></div>`);$('#n').onclick=close;$('#y').onclick=()=>{close();yes()}}
+function codeCheck(cb){modal(`<h2>Code de modification</h2><label>Entrez le code International2026</label><input id="cc" type="password" placeholder="Code"><div class="row"><button class="btn g" id="n">Annuler</button><button class="btn" id="y">Valider</button></div>`);$('#n').onclick=close;const go=()=>{if(($('#cc').value||'').trim().toUpperCase()==='INTERNATIONAL2026'){close();cb()}else toast('Code incorrect')};$('#y').onclick=go;$('#cc').onkeydown=ev=>{if(ev.key=='Enter')go()};$('#cc').focus()}
 function touch(){dirty=true;render()}
 function save(){localStorage.setItem(K,JSON.stringify(db));dirty=false;render();toast('Enregistré ✔')}
 function sav(){ask('Voulez-vous vraiment enregistrer ?',save)}
@@ -114,23 +170,32 @@ function addExp(){
  if(!c||!(a>0))return toast('Nature et montant requis');
  db.exps.push({id:uid(),cat:c,amt:a,note:$('#en').value.trim(),at:Date.now()});
  ['#ec','#ea','#en'].forEach(s=>$(s).value='');toast('Dépense ajoutée (à enregistrer)');touch()}
-function addR(){
+function addR(){codeCheck(()=>{
  const f=$('#rf').value.trim(),t=$('#rt').value.trim();
  if(!f||!t)return toast('Remplissez De et À');
- db.routes.push({id:uid(),from:f,to:t});$('#rt').value='';toast('Trajet ajouté');touch()}
-function delR(id){ask('Supprimer ce trajet ?',()=>{db.routes=db.routes.filter(r=>r.id!=id);touch()})}
-function ed(t,id){const s=t=='s',x=find(t,id);
+ db.routes.push({id:uid(),from:f,to:t});$('#rt').value='';toast('Trajet ajouté');touch()})}
+function delR(id){codeCheck(()=>ask('Supprimer ce trajet ?',()=>{db.routes=db.routes.filter(r=>r.id!=id);touch()}))}
+function ed(t,id){codeCheck(()=>edGo(t,id))}
+function edGo(t,id){const s=t=='s',x=find(t,id);
  modal((s?`<h2>Modifier la vente</h2><label>Prix</label><input id="m1" type="number" value="${x.price}"><label>Nombre de tickets</label><input id="m2" type="number" value="${x.qty}"><label>Départ</label><select id="m3">${depOpt(x.dep)}</select><label>Heure du départ</label><input id="m4" type="time" value="${x.dt||''}">`:`<h2>Modifier la dépense</h2><label>Nature</label><input id="m1" value="${e(x.cat)}"><label>Montant</label><input id="m2" type="number" value="${x.amt}"><label>Justification</label><input id="m3" value="${e(x.note)}">`)+`<div class="row"><button class="btn g" id="n">Fermer</button><button class="btn" id="y">Valider</button></div>`);
  $('#n').onclick=close;
  $('#y').onclick=()=>{if(s){x.price=+$('#m1').value;x.qty=+$('#m2').value||1;x.dep=$('#m3').value;x.dt=$('#m4').value}else{x.cat=$('#m1').value.trim();x.amt=+$('#m2').value;x.note=$('#m3').value.trim()}x.mod=Date.now();close();touch()}}
-function cn(t,id){
- modal(`<h2>Annuler</h2><label>Justification (obligatoire)</label><textarea id="m1" rows="3"></textarea><div class="row"><button class="btn g" id="n">Retour</button><button class="btn r" id="y">Confirmer l'annulation</button></div>`);
+function cn(t,id){codeCheck(()=>{
+ modal(`<h2>Retirer l'élément</h2><label>Justification (obligatoire)</label><textarea id="m1" rows="3"></textarea><div class="row"><button class="btn g" id="n">Retour</button><button class="btn r" id="y">Confirmer le retrait</button></div>`);
  $('#n').onclick=close;
- $('#y').onclick=()=>{const w=$('#m1').value.trim();if(!w)return toast('Justification obligatoire');find(t,id).cancel={why:w,at:Date.now()};close();touch()}}
-function row(t,x){const s=t=='s',c=x.cancel;
- return `<div class="rw ${t} ${c?'off':''}"><div><b>${s?e(x.route)+' · '+x.qty+' × '+F(x.price):e(x.cat)}</b>${s&&x.dep?` <span class="tag">${x.dep}${x.dt?' · '+x.dt:''}</span>`:''}<small>${D(x.at)}</small>${x.mod?`<small class="m">✎ Modifié le ${D(x.mod)}</small>`:''}${!s&&x.note?`<small>${e(x.note)}</small>`:''}${c?`<small class="w">Annulé le ${D(c.at)} : ${e(c.why)}</small>`:''}</div><div class="am">${s?'+':'−'}${F(s?x.price*x.qty:x.amt)}${c?'':`<span><button class="sm" onclick="ed('${t}','${x.id}')">Modifier</button><button class="sm r" onclick="cn('${t}','${x.id}')">Annuler</button></span>`}</div></div>`}
+ $('#y').onclick=()=>{const w=$('#m1').value.trim();if(!w)return toast('Justification obligatoire');
+  const arr=t=='s'?db.sales:db.exps,idx=arr.findIndex(x=>x.id==id);if(idx<0)return;
+  const[item]=arr.splice(idx,1);db.trash.push({id:uid(),type:t,data:item,why:w,at:Date.now()});
+  close();touch()}})}
+function restore(id){const idx=db.trash.findIndex(x=>x.id==id);if(idx<0)return;const[t]=db.trash.splice(idx,1);(t.type=='s'?db.sales:db.exps).push(t.data);toast('Restauré');touch()}
+function purge(id){ask('Supprimer définitivement cet élément ? Action irréversible.',()=>{db.trash=db.trash.filter(x=>x.id!=id);touch()})}
+function doReset(){codeCheck(()=>ask("Tout effacer et repartir à zéro ? Irréversible sauf import d'une sauvegarde.",()=>{db=EMPTY();save()}))}
+function row(t,x){const s=t=='s';
+ return `<div class="rw ${t}"><div><b>${s?e(x.route)+' · '+x.qty+' × '+F(x.price):e(x.cat)}</b>${s&&x.dep?` <span class="tag">${x.dep}${x.dt?' · '+x.dt:''}</span>`:''}<small>${D(x.at)}</small>${x.mod?`<small class="m">✎ Modifié le ${D(x.mod)}</small>`:''}${!s&&x.note?`<small>${e(x.note)}</small>`:''}</div><div class="am">${s?'+':'−'}${F(s?x.price*x.qty:x.amt)}<span><button class="sm" onclick="ed('${t}','${x.id}')">Modifier</button><button class="sm r" onclick="cn('${t}','${x.id}')">Annuler</button></span></div></div>`}
+function trow(tr){const s=tr.type=='s',d=tr.data;
+ return `<div class="rw x"><div><b>${s?e(d.route)+' · '+d.qty+' × '+F(d.price):e(d.cat)}</b><small>${D(d.at)}</small><small class="w">Retiré le ${D(tr.at)} — ${e(tr.why)}</small></div><div class="am">${s?'+':'−'}${F(s?d.price*d.qty:d.amt)}<span><button class="sm v" onclick="restore('${tr.id}')">Restaurer</button><button class="sm r" onclick="purge('${tr.id}')">Supprimer déf.</button></span></div></div>`}
 function stat(n,o){const m=new Date();m.setHours(24,0,0,0);const en=+m-o*n*864e5,st=en-n*864e5,
- S=db.sales.filter(x=>!x.cancel&&x.at>=st&&x.at<en),X=db.exps.filter(x=>!x.cancel&&x.at>=st&&x.at<en),
+ S=db.sales.filter(x=>x.at>=st&&x.at<en),X=db.exps.filter(x=>x.at>=st&&x.at<en),
  rev=S.reduce((a,x)=>a+x.price*x.qty,0),pax=S.reduce((a,x)=>a+x.qty,0),ex=X.reduce((a,x)=>a+x.amt,0);
  return{S,X,rev,pax,ex,net:rev-ex}}
 const grp=(a,k,v)=>Object.entries(a.reduce((o,x)=>(o[k(x)]=(o[k(x)]||0)+v(x),o),{})).sort((a,b)=>b[1]-a[1]);
@@ -145,8 +210,8 @@ function render(){
  const q=(+$('#qt').value||1)*(+$('#pr').value||0);$('#tot').textContent=sel?sel+' → '+F(q):'';
  const t0=new Date().setHours(0,0,0,0),td=x=>x.at>=t0;
  $('#kv').innerHTML=kpi(stat(1,0));
- $('#lv').innerHTML=db.sales.filter(td).sort((a,b)=>b.at-a.at).map(x=>row('s',x)).join('')||'<p class="mu">Aucune vente aujourd\'hui.</p>';
- $('#le').innerHTML=db.exps.filter(td).sort((a,b)=>b.at-a.at).map(x=>row('x',x)).join('')||'<p class="mu">Aucune dépense aujourd\'hui.</p>';
+ $('#lv').innerHTML=db.sales.filter(td).sort((a,b)=>b.at-a.at).map(x=>row('s',x)).join('')||'<p class="mu">Aucune vente aujourd’hui.</p>';
+ $('#le').innerHTML=db.exps.filter(td).sort((a,b)=>b.at-a.at).map(x=>row('x',x)).join('')||'<p class="mu">Aucune dépense aujourd’hui.</p>';
  const n=+$('#pe').value,a=stat(n,0),b=stat(n,1),px=Object.fromEntries(grp(a.S,x=>x.route,x=>x.qty));
  $('#pd').textContent='Bilan – '+$('#pe').selectedOptions[0].text+' · édité le '+D(Date.now());
  const P=[[1,'Jour'],[7,'Semaine'],[30,'Mois'],[90,'3 mois'],[180,'6 mois'],[365,'1 an']];
@@ -156,11 +221,15 @@ function render(){
  <div class="cd"><h2>Dépenses par nature</h2>${bars(grp(a.X,x=>x.cat,x=>x.amt),'e')}</div>`;
  const h=$('#hq').value.toLowerCase();
  $('#lh').innerHTML=[...db.sales.map(x=>['s',x]),...db.exps.map(x=>['x',x])].filter(([t,x])=>((x.route||x.cat)+' '+(x.note||'')).toLowerCase().includes(h)).sort((a,b)=>b[1].at-a[1].at).map(([t,x])=>row(t,x)).join('')||'<p class="mu">Aucun enregistrement.</p>';
- $('#lr').innerHTML=db.routes.map(r=>`<div class="rw"><b>${e(rl(r))}</b><button class="sm r" onclick="delR('${r.id}')">Supprimer</button></div>`).join('')||'<p class="mu">Aucun trajet.</p>'}
+ $('#lr').innerHTML=db.routes.map(r=>`<div class="rw"><b>${e(rl(r))}</b><button class="sm r" onclick="delR('${r.id}')">Supprimer</button></div>`).join('')||'<p class="mu">Aucun trajet.</p>';
+ $('#lc').innerHTML=db.trash.slice().sort((a,b)=>b.at-a.at).map(trow).join('')||'<p class="mu">Corbeille vide.</p>'}
 function prt(){$('[data-t=b]').click();setTimeout(print,300)}
 function expo(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db)],{type:'application/json'}));a.download='CTM-TCY-sauvegarde-'+new Date().toISOString().slice(0,10)+'.json';a.click()}
-$('#im').onchange=ev=>{const f=ev.target.files[0];if(!f)return;f.text().then(t=>{try{const j=JSON.parse(t);if(!j.routes||!j.sales||!j.exps)throw 0;ask('Importer cette sauvegarde ? Elle remplacera les données actuelles.',()=>{db=j;db.last=db.last||{};save()})}catch{toast('Fichier invalide')}});ev.target.value=''};
-$$('#nv button').forEach(b=>b.onclick=()=>{$$('#nv button,section').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#t-'+b.dataset.t).classList.add('on');scrollTo(0,0)});
+$('#im').onchange=ev=>{const f=ev.target.files[0];if(!f)return;codeCheck(()=>{f.text().then(t=>{try{const j=JSON.parse(t);if(!j.routes||!j.sales||!j.exps)throw 0;j.trash=j.trash||[];j.last=j.last||{};ask('Importer cette sauvegarde ? Elle remplacera les données actuelles.',()=>{db=j;save()})}catch{toast('Fichier invalide')}})});ev.target.value=''};
+$$('#nv button').forEach(b=>b.onclick=()=>{
+ const go=()=>{$$('#nv button,section').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#t-'+b.dataset.t).classList.add('on');scrollTo(0,0)};
+ if(b.dataset.t=='c')codeCheck(go);else go()});
+$$('.tabs2 button').forEach(b=>b.onclick=()=>{$$('.tabs2 button').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#g-e').style.display=b.dataset.g=='e'?'block':'none';$('#g-i').style.display=b.dataset.g=='i'?'block':'none'});
 $('#dp').innerHTML=depOpt('');
 $('#dp').onchange=()=>{if($('#dp').value&&!$('#dt').value)$('#dt').value=new Date().toTimeString().slice(0,5);render()};
 ['#pr','#qt','#pe','#hq'].forEach(s=>$(s).oninput=render);
@@ -169,6 +238,11 @@ const tick=()=>$('#clk').innerHTML=`<b>${new Date().toLocaleDateString('fr-FR',{
 tick();setInterval(tick,20000);
 $('#sn').innerHTML=[...'CTM-TCY'].map((c,i)=>`<span style="--i:${i}">${c}</span>`).join('');
 setTimeout(()=>{$('#splash').classList.add('h');setTimeout(()=>$('#splash').remove(),900)},3300);
+function tryGate(){if(($('#gc').value||'').trim().toUpperCase()==='CTM2026'){sessionStorage.setItem('ctm_auth','1');$('#gate').classList.remove('on')}else{$('#ge').textContent='Code incorrect'}}
+$('#gc').onkeydown=ev=>{if(ev.key=='Enter')tryGate()};
+if(sessionStorage.getItem('ctm_auth')!=='1')$('#gate').classList.add('on');
+const DEMO=[['1','Ouverture de l’appli','Le code d’accès CTM2026 est demandé au démarrage.'],['2','Onglet Ventes','On choisit la ville, le prix et le nombre de tickets.'],['3','Ajouter la vente','Le bouton « Ajouter » place la vente dans la liste du jour.'],['4','Enregistrer','Le bouton « Enregistrer » demande confirmation Oui/Non avant de sauvegarder.'],['5','Dépenses','On note la nature (Gazoil, Lavage…), le montant et une justification.'],['6','Bilan','Recettes, dépenses, solde et comparatif par période.'],['7','Modifier / Annuler','Modifier et Annuler demandent le code International2026.'],['8','Corbeille','Les éléments retirés peuvent être restaurés ou supprimés définitivement.']];
+$('#gdw').innerHTML=DEMO.map(([n,t,l])=>`<figure><div class="fk"><div style="font-size:34px">${n}</div><div>${e(t)}</div></div><figcaption>${e(l)}</figcaption></figure>`).join('');
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 render();
 </script></body></html>
